@@ -6,18 +6,18 @@ namespace Par_ou_impar
     {
         static void Main(string[] args)
         {
-            int x;
+            int num;
 
-            Console.WriteLine("Digite um número");
-            x = int.Parse(Console.ReadLine());
+            do{
+            Console.WriteLine("Digite um número inteiro: ");
+            num = int.Parse (Console.ReadLine());
 
-            if (x % 2 == 0) {
-            Console.WriteLine("Seu número é Par");
+            if (num % 2 == 0){
+            Console.WriteLine("Esse número é par");
+            }else{
+            Console.WriteLine("Esse número é ímpar");
             }
-
-            else {
-            Console.WriteLine("Seu número é Impar");
-            }
+            } while(num != 0); 
         }
     }
 }
