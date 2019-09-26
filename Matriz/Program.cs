@@ -6,20 +6,26 @@ namespace Matriz
     {
         static void Main(string[] args)
         {
-           
-        Console.WriteLine("Matriz");
-        int[] vetor = {1,2,3,4,5,6};
+            int[] vetor = new int[6];
+            int pares   = 0;
+            int impares = 0;
 
-        for(int i=0; i<7; i++)
-        Console.WriteLine(vetor[i]);
+            for(int cont = 0; cont < 6; cont++){
+                Console.Write("Digite um número: ");
+                vetor[cont] = int.Parse(Console.ReadLine()); 
 
-        if (vetor[i] % 2 == 0){
+            }
 
-        Console.WriteLine("Esse número é par");
-        }else{
-        Console.WriteLine("Esse número é ímpar");
-        }
-        
+            foreach (int num in vetor)
+            {
+                if(num % 2 == 0){
+                    pares += 1;
+                } else {
+                    impares++;
+                }
+            }
+
+            Console.WriteLine($"Você tem {pares} números pares e {impares} números impares");
         }
     }
 }
