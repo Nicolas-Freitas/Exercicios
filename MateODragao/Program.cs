@@ -24,17 +24,8 @@ namespace MateODragao
                 {
                     case "1":
                         Console.Clear();
-                        Ladino ladino = new Ladino();
-                        ladino.Nome = "Gabrielo";
-                        ladino.Sobrenome = "Gabrielo";
-                        ladino.CidadeNatal = "Ecaterimburgo";
-                        ladino.DataNascimento = DateTime.Parse("01/01/01");
-                        ladino.FerramentaAtaque = "Peixeira";
-                        ladino.FerramenteProtecao = "Armadura leve feita com escamas de dragão";
-                        ladino.Forca = 2;
-                        ladino.Destreza = 3;
-                        ladino.Inteligencia = 2;
-                        ladino.Vida = 20;
+                        
+                        CriarLadino ();
 
                         Dragao dragao = new Dragao();
                         dragao.Nome = "Dovahkiin";
@@ -44,12 +35,11 @@ namespace MateODragao
                         dragao.Vida = 300;
 
                         /* INICIO - Primeiro Diálogo */
+                        CriarDialogo(ladino.Nome, $"{dragao.Nome}, fucking awesome");
                         System.Console.WriteLine($"{ladino.Nome.ToUpper()}: {dragao.Nome}, Bom dia meu consagrado ta afim de tirar um x1 sem perder a amizade!!");
                         System.Console.WriteLine($"{dragao.Nome.ToUpper()}: Certamente meu bom, vamo lá tira essa luta incrivel \n");
 
-                        System.Console.WriteLine();
-                        System.Console.WriteLine("Aperte ENTER para prosseguir");
-                        Console.ReadLine();
+                        FinalizarDialogo();
                         /* FIM - Primeiro Diálogo */
 
                         /* INICIO - Segundo Diálogo */
@@ -141,59 +131,62 @@ namespace MateODragao
                                 System.Console.WriteLine();
                                 System.Console.WriteLine("Aperte ENTER para prosseguir");
                                 Console.ReadLine();
-                                /* INICIO - Turno Jogador */
+                                /** 
+                                *INICIO - Turno Jogador* 
+                                **/
                                 Console.Clear();
                                 System.Console.WriteLine("-------------------------------------------Turno do Jogador-------------------------------------------");
                                 System.Console.WriteLine("Escolha sua ação:");
                                 System.Console.WriteLine(" 1 - Atacar");
                                 System.Console.WriteLine(" 2 - Fugir");
 
-                            opcaoBatalhajogador = Console.ReadLine();
+                                opcaoBatalhajogador = Console.ReadLine();
 
-                            switch (opcaoBatalhajogador)
-                            {
-                                case "1":
-                                    geradorNumeroAleatorio = new Random();
-                                    numeroAleatorioJogador = geradorNumeroAleatorio.Next(0, 5);
-                                    numeroAleatorioDragao = geradorNumeroAleatorio.Next(0, 5);
+                                switch (opcaoBatalhajogador)
+                                {
+                                    case "1":
+                                        geradorNumeroAleatorio = new Random();
+                                        numeroAleatorioJogador = geradorNumeroAleatorio.Next(0, 5);
+                                        numeroAleatorioDragao = geradorNumeroAleatorio.Next(0, 5);
 
-                                    ladinoDestrezaTotal = ladino.Destreza + numeroAleatorioJogador;
-                                    DragaoDestrezaTotal = dragao.Destreza + numeroAleatorioDragao;
+                                        ladinoDestrezaTotal = ladino.Destreza + numeroAleatorioJogador;
+                                        DragaoDestrezaTotal = dragao.Destreza + numeroAleatorioDragao;
 
-                                    if (ladinoDestrezaTotal > DragaoDestrezaTotal)
-                                    {
-                                        System.Console.WriteLine($"{ladino.Nome.ToUpper()}: Toma essa fumante do crl vai la fumar seu narguines");
-                                        dragao.Vida -= poderAtaqueLadino + 5;
-                                        System.Console.WriteLine("-------------------------------------------------------------------------------------------------");
-                                        System.Console.WriteLine($"HP Dragão: {dragao.Vida}");
-                                        System.Console.WriteLine($"HP Ladino: {ladino.Vida}");
-                                    }
-                                    else
-                                    {
-                                        System.Console.WriteLine($"{dragao.Nome.ToUpper()}): Plebe inferior nem acertar me consegue vai la dormir baiano");
-                                    }
+                                        if (ladinoDestrezaTotal > DragaoDestrezaTotal)
+                                        {
+                                            System.Console.WriteLine($"{ladino.Nome.ToUpper()}: Toma essa fumante do crl vai la fumar seu narguines");
+                                            dragao.Vida -= poderAtaqueLadino + 5;
+                                            System.Console.WriteLine("-------------------------------------------------------------------------------------------------");
+                                            System.Console.WriteLine($"HP Dragão: {dragao.Vida}");
+                                            System.Console.WriteLine($"HP Ladino: {ladino.Vida}");
+                                        }
+                                        else
+                                        {
+                                            System.Console.WriteLine($"{dragao.Nome.ToUpper()}): Plebe inferior nem acertar me consegue vai la dormir baiano");
+                                        }
 
-                                    if(ladino.Vida <= 0)
-                                    {
-                                        System.Console.WriteLine("kkk noob tenta de novo");
-                                    }
-                                    if (dragao.Vida <= 0) {
-                                        System.Console.WriteLine("Boa");
-                                    }
-                                    System.Console.WriteLine();
-                                    System.Console.WriteLine("Aperte ENTER para prosseguir");
-                                    Console.ReadLine();
-                                    
-                                    break;
-                                case "2":
-                                    jogadorNaoCorreu = false;
-                                    System.Console.WriteLine($"{ladino.Nome.ToUpper()}: ih carai deu B.O vou la esticar minha rede");
-                                    System.Console.WriteLine($"{dragao.Nome.ToUpper()}: bah vai la esticar sua rede baiano");
-                                    break;
-                            }
+                                        if (ladino.Vida <= 0)
+                                        {
+                                            System.Console.WriteLine("kkk noob tenta de novo");
+                                        }
+                                        if (dragao.Vida <= 0)
+                                        {
+                                            System.Console.WriteLine("Boa");
+                                        }
+                                        System.Console.WriteLine();
+                                        System.Console.WriteLine("Aperte ENTER para prosseguir");
+                                        Console.ReadLine();
 
-                            System.Console.WriteLine("Aperte ENTER  para prosseguir");
-                            Console.ReadLine();
+                                        break;
+                                    case "2":
+                                        jogadorNaoCorreu = false;
+                                        System.Console.WriteLine($"{ladino.Nome.ToUpper()}: ih carai deu B.O vou la esticar minha rede");
+                                        System.Console.WriteLine($"{dragao.Nome.ToUpper()}: bah vai la esticar sua rede baiano");
+                                        break;
+                                }
+
+                                System.Console.WriteLine("Aperte ENTER  para prosseguir");
+                                Console.ReadLine();
                                 /* FIM - Turno Jogador */
                             }
                         }
@@ -210,6 +203,37 @@ namespace MateODragao
                         break;
                 }
             } while (jogadorNaoDesistiu);
+        }
+
+        private static void CriarDialogo(string nome, string frase)
+        {
+            System.Console.WriteLine($"{nome.ToUpper()}: {frase}");
+        }
+
+        private static void FinalizarDialogo()
+        {
+            System.Console.WriteLine();
+            System.Console.WriteLine("Aperte ENTER para prosseguir");
+            Console.ReadLine();
+            Console.Clear();
+        }
+        private static Ladino CriarLadino()
+        {
+            string numero = Console.ReadLine();
+
+            Ladino ladino = new Ladino();
+            ladino.Nome = "Gabrielo";
+            ladino.Sobrenome = "Gabrielo";
+            ladino.CidadeNatal = "Ecaterimburgo";
+            ladino.DataNascimento = DateTime.Parse("01/01/01");
+            ladino.FerramentaAtaque = "Peixeira";
+            ladino.FerramenteProtecao = "Armadura leve feita com escamas de dragão";
+            ladino.Forca = 2;
+            ladino.Destreza = 3;
+            ladino.Inteligencia = 2;
+            ladino.Vida = 20;
+
+            return ladino;
         }
     }
 }
