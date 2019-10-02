@@ -9,7 +9,7 @@ namespace Byte_Bank
 
             Console.WriteLine("Olá, seja Bem vindo ao Byte-Bank.");
 
-            Conta conta = new Conta();
+            Conta conta = new conta();
 
             System.Console.WriteLine("Por favor insira seu nome.");
             conta.Nome = Console.ReadLine();
