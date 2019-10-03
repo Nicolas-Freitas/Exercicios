@@ -1,15 +1,14 @@
-namespace Byte_Bank
+using System;
+namespace ByteBank.Models
 {
-    public class Conta
+    public class Login
     {
-        public string Nome {get;set;}
-        public string Email {get;set;}
-        public string Senha {get;set;}
-        public string Cpf {get;set;}
+        public string Cpf {get; set;}
+        public string Nome {get; set;}
+        public string Email {get; set;}
+        public string Senha {get; set;}
 
-        public int MinLength { get; set; }
-
-        public Conta(string Nome, string Cpf, string Email){
+        public Login(string Nome, string Cpf, string Email){
             this.Nome = Nome;
             this.Cpf = Cpf;
             this.Email = Email;
@@ -23,5 +22,6 @@ namespace Byte_Bank
                 return false;
             }
         }
+
     }
 }
