@@ -34,9 +34,7 @@ namespace ByteBank
                     System.Console.WriteLine("Senha Trocada com sucesso");
                 }
             }while(!senhaOk);
-        
-
-
+            
         }
     }
 }
