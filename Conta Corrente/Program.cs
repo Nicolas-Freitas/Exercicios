@@ -1,37 +1,37 @@
 ﻿using System;
+using ContaCorrente;
 
-namespace Conta_Corrente
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            System.Console.WriteLine("Bem vindo ao Banco tujjhipfse");
-            ContaCorrente conta1 =  new ContaCorrente();
-            System.Console.WriteLine("Cadastro de conta Corrente");
-            System.Console.WriteLine();
-            
-            System.Console.WriteLine("Digite o titular");
-            string titular = Console.ReadLine();
-            System.Console.WriteLine("Digite o número da agência");
-            int agencia = int.Parse(Console.ReadLine());
-            System.Console.WriteLine("Digite o número da conta");
-            int conta = int.Parse(Console.ReadLine());
+namespace ContaCorrente {
+    class Program {
+        static void Main (string[] args) {
+            System.Console.WriteLine ("Bem vindo a sua conta corrente");
 
-            System.Console.WriteLine("Ok, é necessário realizar o primeiro deposito por favor insira o valor que deseja inserir: ");
-            conta1.Saldo = int.Parse(Console.ReadLine());
+            System.Console.WriteLine ("Cadastro de conta corrente: ");
+            System.Console.WriteLine ();
 
-            bool saldoValido = false;
-            double saldo;
-            do{
-                System.Console.WriteLine("Digite o saldo: ");
-                saldo = double.Parse(Console.ReadLine());
+            System.Console.WriteLine ("Digite sua agência: ");
+            int agencia = int.Parse (Console.ReadLine ());
+
+            System.Console.WriteLine ("Digite sua conta: ");
+            int numero = int.Parse (Console.ReadLine ());
+
+            System.Console.WriteLine ("Digite seu titular: ");
+            string cliente = Console.ReadLine ();
+
+            bool saldoInvalido = true;
+            do {
+                System.Console.WriteLine ("Digite o saldo: ");
+                double saldo = double.Parse (Console.ReadLine ());
                 if (saldo >= 0){
-                    saldoValido = true;
-                } else {
-                    System.Console.WriteLine("O saldo não pode ser negativo");
+                    saldoInvalido = false;
                 }
-            }while(!saldoValido);
+                else{
+                    System.Console.WriteLine("O saldo não pode negativo");
+                }
+            }
+            while (!saldoInvalido);
+
+            
         }
     }
 }
