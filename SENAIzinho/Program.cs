@@ -6,7 +6,7 @@ namespace SENAIzinho
     {
         static void Main(string[] args)
         {
-            Aluno[] alunos = new Aluno[100];
+            Aluno[] alunos = new Aluno[2];
             int alunosCadastrados = 0;
             Sala[] salas = new Sala[10];
             int salasCadastradas = 0;
@@ -34,10 +34,13 @@ namespace SENAIzinho
                         Console.Clear();
                         System.Console.WriteLine("Digite o nome do aluno:");
                         aluno.nome = Console.ReadLine();
+
                         System.Console.WriteLine("Data de Nascimento");
                         aluno.dataNascimento = DateTime.Parse(Console.ReadLine());
+
                         System.Console.WriteLine("Curso");
                         aluno.curso = Console.ReadLine();
+
                         System.Console.WriteLine("Sala");
                         aluno.numeroSala = int.Parse(Console.ReadLine());
 
@@ -58,6 +61,10 @@ namespace SENAIzinho
                         sala.numeroSala = int.Parse(Console.ReadLine());
                         System.Console.WriteLine("Digite a capacidade máxima de alunos nessa sala:");
                         sala.capacidadeTotal = int.Parse(Console.ReadLine());
+
+                        salas[salasCadastradas] = sala;
+
+                        salasCadastradas++;
                         break;
                     case "3":
                         Console.Clear();
@@ -84,15 +91,14 @@ namespace SENAIzinho
                         Console.ReadLine();
                         break;
                     case "6":
-                        foreach (var item  in alunos){
+                        foreach (var item in alunos){
                             if (item != null) {
                                 Console.Clear();
 
-                                System.Console.WriteLine("__________________________________________________________________________________________________");
+                                System.Console.WriteLine("--------------------------------------------------------------------------------------------------");
                                 System.Console.WriteLine ($"Nome do aluno: {item.nome}");
                                 System.Console.WriteLine ($"Curso: {item.curso}");
-                                System.Console.WriteLine ($"Sala: {item.numeroSala}");
-                                System.Console.WriteLine("__________________________________________________________________________________________________");
+                                System.Console.WriteLine("--------------------------------------------------------------------------------------------------");
                                 System.Console.WriteLine ("Aperte ENTER para voltar ao menu");
                             }
                         }
