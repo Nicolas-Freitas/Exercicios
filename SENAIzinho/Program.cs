@@ -12,6 +12,18 @@ namespace SENAIzinho
             int salasCadastradas = 0;
 
             string menu;
+            
+            List<TodoItem> todoList = new List<TodoItem>();
+            string fileName = "Alunos.csv";
+            string filePath = ".\\" + fileName;
+
+            todoList = initList(@filePath);
+            
+            if(todoList == null){
+                return -1;
+            }
+
+            int opcao = 0;
 
             do{
             Console.Clear();
@@ -81,10 +93,10 @@ namespace SENAIzinho
                             if (item != null) {
                                 Console.Clear();
 
-                                System.Console.WriteLine("__________________________________________________________________________________________________");
+                                System.Console.WriteLine("--------------------------------------------------------------------------------------------------");
                                 System.Console.WriteLine ($"Nome do aluno: {item.numeroSala}");
                                 System.Console.WriteLine ($"Curso: {item.capacidadeTotal}");
-                                System.Console.WriteLine("__________________________________________________________________________________________________");
+                                System.Console.WriteLine("--------------------------------------------------------------------------------------------------");
                                 System.Console.WriteLine ("Aperte ENTER para voltar ao menu");
                             }
                         }

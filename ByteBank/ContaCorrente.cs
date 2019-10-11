@@ -2,41 +2,47 @@ namespace ByteBank
 {
     public class ContaCorrente
     {
-        public Login Titular {get;set;}
+        public Cliente Titular {get;set;}
         public int Agencia {get;set;}
         public int Numero {get;set;}
-        public double Saldo {get;set;}
+        private double _saldo {get;set;}
 
-        public ContaCorrente (int Agencia, int Numero, Login Titular){
+        public double Saldo{
+            get {return _saldo;}
+        } 
+
+        public ContaCorrente(int Agencia,int Numero,Cliente Titular){
             this.Agencia = Agencia;
             this.Numero = Numero;
             this.Titular = Titular;
-            this.Saldo = 0.0;
-
+            this._saldo = 0.0;
         }
+
         public double Deposito(double valor){
-            this.Saldo += valor;
-            this.Saldo = this.Saldo + valor;
-            return this.Saldo;
+            if (valor < 0){
+                
+            }else{
+                System.Console.WriteLine("O deposito foi efetuado com sucesso");
+            }
+            this._saldo += valor;
+            return this._saldo;
         }
-
         public bool Saque(double valor){
-            if(valor <= this.Saldo){
-                this.Saldo -= valor;
+            
+            if(valor <= this._saldo){
+                this._saldo -= valor;
                 return true;
             } else{
                 return false;
             }
         }
-
-        public bool Transferencia(ContaCorrente destino,double valor){
+        public bool Transferencia(ContaCorrente destino, double valor){
             if (this.Saque(valor)){
                 destino.Deposito(valor);
                 return true;
             } else {
                 return false;
             }
-
         }
     }
 }
