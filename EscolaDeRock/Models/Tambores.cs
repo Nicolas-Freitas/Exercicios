@@ -1,14 +1,13 @@
 ﻿using System;
 using EscolaDeRock.Interfaces;
 
-
 namespace EscolaDeRock.Models
 {
-    public class Bateria : InstrumentoMusical,IPercussao
+    public class Tambores : InstrumentoMusical, IPercussao
     {
         public bool ManterRitmo()
         {
-            Console.WriteLine("Mantendo ritmo da Bateria.");
+            Console.WriteLine("Mantendo ritmo dos Tambores");
             return true;
         }
     }

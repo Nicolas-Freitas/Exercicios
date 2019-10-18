@@ -1,4 +1,4 @@
-namespace EscolaDeRock
+﻿namespace EscolaDeRock.Interfaces
 {
     public interface IMelodia
     {
