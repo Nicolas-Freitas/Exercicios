@@ -1,13 +1,12 @@
-using System;
 using Reciclagem.Interfaces;
+
 namespace Reciclagem.Models
 {
     public class Garrafa : Lixo, IVidro
     {
-        public bool LixoVidro()
+        public string ReciclarFeitoVidro()
         {
-            System.Console.WriteLine("|Lixeira : Vidro | Cor: Verde|");
-            return true;
+            return this.GetType().Name;
         }
     }
 }

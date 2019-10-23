@@ -1,13 +1,12 @@
-using System;
 using Reciclagem.Interfaces;
+
 namespace Reciclagem.Models
 {
-    public class Papelao : Lixo, IPlastico
+    public class Papelao : Lixo, IPapel
     {
-        public bool LixoIndefinido()
+        public string ReciclarFeitoPapel()
         {
-            System.Console.WriteLine("|Lixeira : Papel | Cor: Azul|");
-            return true;
+            return this.GetType().Name;
         }
     }
 }

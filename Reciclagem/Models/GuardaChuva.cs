@@ -1,13 +1,13 @@
-using System;
 using Reciclagem.Interfaces;
+
 namespace Reciclagem.Models
 {
     public class GuardaChuva : Lixo, IIndefinido
     {
-        public bool LixoIndefinido()
+
+        public string ProcurarOQueFazer()
         {
-            System.Console.WriteLine("|Lixeira : Indefinido | Cor: Cinza|");
-            return true;
+            return this.GetType().Name;
         }
     }
 }
