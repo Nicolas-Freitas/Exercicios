@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Par_ou_impar
+namespace Multiplo_3
 {
     class Program
     {
@@ -13,9 +13,9 @@ namespace Par_ou_impar
             num = int.Parse (Console.ReadLine());
 
             if (num % 3 == 0){
-            Console.WriteLine("Esse número é multiplo de 3");
+            Console.WriteLine("Multiplo de 3");
             }else{
-            Console.WriteLine("O número não é multiplo de 3");
+            Console.WriteLine("Esse número é ímpar");
             }
             } while(num != 0); 
         }

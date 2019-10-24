@@ -12,10 +12,10 @@ namespace Par_ou_impar
             Console.WriteLine("Digite um número inteiro: ");
             num = int.Parse (Console.ReadLine());
 
-            if (num % 3 == 0){
-            Console.WriteLine("Esse número é multiplo de 3");
+            if (num % 2 == 0){
+            Console.WriteLine("Esse número é par");
             }else{
-            Console.WriteLine("O número não é multiplo de 3");
+            Console.WriteLine("Esse número é ímpar");
             }
             } while(num != 0); 
         }
