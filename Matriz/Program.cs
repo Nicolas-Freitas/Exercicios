@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Matriz
+namespace Vetores
 {
     class Program
     {

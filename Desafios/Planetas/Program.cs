@@ -8,7 +8,7 @@ namespace Planetas
         {
             double peso;
             
-            System.Console.WriteLine("Digite seu peso em N: ");
+            System.Console.WriteLine("Digite seu peso em kg ");
             peso = int.Parse(Console.ReadLine());
 
             peso = peso *10;
