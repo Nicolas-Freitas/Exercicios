@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 
 namespace AAWFIWAHNJFI0WAFHWAFWAHF0WHDA0
 {
@@ -6,8 +6,11 @@ namespace AAWFIWAHNJFI0WAFHWAFWAHF0WHDA0
     {
         static void Main(string[] args)
         {
-            
-            
+            int[,] matrix = {
+                {10, 15, 48},
+                {56, 97, 77},
+                {2, 100, 33}
+            };
         }
     }
 }

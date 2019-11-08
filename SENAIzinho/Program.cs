@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SENAIzinho
 {
@@ -13,18 +14,17 @@ namespace SENAIzinho
 
             string menu;
             
-            List<TodoItem> todoList = new List<TodoItem>();
+            List<Aluno> todoList = new List<Aluno>();
             string fileName = "Alunos.csv";
             string filePath = ".\\" + fileName;
 
-            todoList = initList(@filePath);
+            
             
             if(todoList == null){
-                return -1;
+                return false;
             }
 
-            int opcao = 0;
-
+            
             do{
             Console.Clear();
             System.Console.WriteLine("Eae meu bom o que você deseja fazer?");
