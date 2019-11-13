@@ -26,12 +26,10 @@ using System;
                 return View("Sucesso");
                 }
                 catch (Exception e)
-                {
-                    System.Console.WriteLine(e.StackTrace);
-                    return View ("Erro");
-                }
-                
-
+            {
+                System.Console.WriteLine(e.StackTrace);
+                return View ("Erro");
             }
         }
     }
+}
