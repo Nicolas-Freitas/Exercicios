@@ -1,3 +1,4 @@
+@model McBonalds_MVC.ViewModels.PedidoViewModel
 <main>
         <h2>Pede aí, jovem!</h2>
         <form method="POST" action='@Url.Action("Registrar","Pedido")'>
@@ -16,31 +17,35 @@
             <div>
                 <label for="telefone">Telefone para contato</label>
                 <br />
-                <input id="telefone" type="text" placeholder="11 12345 6789"/>
+                <input id="telefone" type="text" name="telefone" placeholder="11 12345 6789"/>
             </div>
 
             <div>
                 <label for="email">E-mail</label>
                 <br />
-                <input id="email" type="email" />
+                <input id="email" type="email" name="email" maxlength="30" />
             </div>
 
             </div>
             <div class="double-field">
                 <div>
                     <label for="hamburguer">Hamburguer</label>
-                    <select id="hamburguer" required>
+                    <select id="hamburguer" name="hamburguer"required>
                         <option value="" disabled selected>Selecione</option>
-                        <option value="furioso">Furioso</option>
-                        <option value="combo">Combo</option>
+                        @foreach (var h in Model.Hamburgueres)
+                        {
+                            <option value=@h.Nome>@h.Nome por @h.Preco</option>
+                        }
                     </select>
                 </div>
                 <div>
                     <label for="shake">Shake</label>
                     <select id="shake" name="shake">
                         <option value="" disabled selected>Selecione</option>
-                        <option value="Chocolate">Chocolate</option>
-                        <option value="Biscoito">Biscoito</option>
+                        @foreach (var s in Model.Shakes)
+                        {
+                            <option value=@s.Nome>@s.Nome por @s.Preco</option>
+                        }
                     </select>
                 </div>
             </div>

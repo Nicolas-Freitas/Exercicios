@@ -2,13 +2,13 @@ using Microsoft.Extensions.Primitives;
 
 namespace McBonalds_MVC.Models
 {
-    public class Hamburger : Produto
+    public class Hamburguer : Produto
     {
-        public Hamburger()
+        public Hamburguer()
         {
 
         }
-        public Hamburger(string nome, double preco)
+        public Hamburguer(string nome, double preco)
         {
             this.Nome = nome;
             this.Preco = preco;
