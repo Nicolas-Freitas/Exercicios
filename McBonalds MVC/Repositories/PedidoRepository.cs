@@ -20,8 +20,7 @@ namespace McBonalds_MVC.Repositories {
         }
 
         private string PrepararRegistroCSV (Pedido pedido) 
-        {
-            Cliente cliente = pedido.Cliente;
+        {Cliente cliente = pedido.Cliente;
             Hamburguer hamburger = pedido.Hamburguer;
             Shake shake = pedido.Shake;
 

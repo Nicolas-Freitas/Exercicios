@@ -1,5 +1,6 @@
 using System;
 using McBonalds_MVC.Repositories;
+using McBonalds_MVC.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,10 +28,24 @@ namespace McBonalds_MVC.Controllers {
                 var usuario = form["email"];
                 var senha = form["senha"];
 
-                clienteRepository.Obterpor(usuario);
+                var cliente = clienteRepository.Obterpor(usuario);
 
+                if (cliente != null)
+                {
+                    if(cliente.Email.Equals(usuario) && cliente.Senha.Equals(senha))
+                    {
+                        return View ("Historico", "Cliente");
+                    }
+                    else
+                    {
+                        return View ("Erro", new RespostaViewModel("Senha errada"));
+                    }
 
-
+                }
+                else
+                {
+                    return View("Erro", new RespostaViewModel($"Usuário {usuario} não foi encontrado"));
+                }
                 return View("Sucesso");
             } 
             catch (Exception e) 
