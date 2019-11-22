@@ -9,8 +9,8 @@ namespace McBonalds_MVC.Repositories
         private const string PATH = "Database/Cliente.csv";
         public ClienteRepository () 
         {
-            if (!File.Exists (PATH)) 
             {
+            if (!File.Exists (PATH)) 
                 File.Create (PATH).Close ();
             }
         }
@@ -18,16 +18,14 @@ namespace McBonalds_MVC.Repositories
         {
             var linha = new string[] { PreparaRegistroCSV (cliente) };
             File.AppendAllLines (PATH, linha);
-
             return true;
         }
-
-        public Cliente Obterpor(string email)
+        public Cliente ObterPor(string email)
         {
             var linhas = File.ReadAllLines(PATH);
-            foreach(var linha in linhas)
+            foreach (var linha in linhas)
             {
-                if(ExtrairValorDoCampo("email", linha).Equals(email))
+                if (ExtrairValorDoCampo("email", linha).Equals(email))
                 {
                     Cliente c = new Cliente();
                     c.Nome = ExtrairValorDoCampo("nome", linha);
@@ -36,6 +34,7 @@ namespace McBonalds_MVC.Repositories
                     c.Endereco = ExtrairValorDoCampo("endereco", linha);
                     c.Telefone = ExtrairValorDoCampo("telefone", linha);
                     c.DataNascimento = DateTime.Parse(ExtrairValorDoCampo("data_nascimento", linha));
+
                     return c;
                 }
             }
@@ -43,13 +42,13 @@ namespace McBonalds_MVC.Repositories
         }
         private string PreparaRegistroCSV (Cliente cliente) 
         {
-            return $"nome={cliente.Nome};email={cliente.Email};senha={cliente.Senha}; endereco={cliente.Endereco}; telefone={cliente.Telefone}; data_nascimento={cliente.DataNascimento}";
+            return $"nome={cliente.Nome};email={cliente.Email};senha={cliente.Senha};endereco={cliente.Endereco};telefone={cliente.Telefone};data_nascimento={cliente.DataNascimento}";
         }
 
         public string ExtrairValorDoCampo(string nomeCampo, string linha)
         {
             var chave = nomeCampo;
-            var indiceChave = linha.IndexOf(chave);
+            var indiceChave = linha.IndexOf(chave);  
 
             var indiceTerminal = linha.IndexOf(";", indiceChave);
             var valor = "";
@@ -62,7 +61,8 @@ namespace McBonalds_MVC.Repositories
             {
                 valor = linha.Substring(indiceChave);
             }
-            System.Console.WriteLine($"Campo:{nomeCampo} tem valor {valor}");
+
+            System.Console.WriteLine($"Campo {nomeCampo} tem valor {valor}");
             return valor.Replace(nomeCampo + "=", "");
         }
     }

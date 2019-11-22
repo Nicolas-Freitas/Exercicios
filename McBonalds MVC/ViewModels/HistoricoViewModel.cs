@@ -5,6 +5,6 @@ namespace McBonalds_MVC.ViewModels
 {
     public class HistoricoViewModel
     {
-        public List<Pedido> Pedidos {get;set;}
+        public List<Pedido> Pedidos {get; set;}
     }
 }
