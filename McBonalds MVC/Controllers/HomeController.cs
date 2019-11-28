@@ -5,15 +5,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using McBonalds_MVC.Models;
+using McBonalds_MVC.ViewModels;
 
 namespace McBonalds_MVC.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : AbstractController
     {
         public IActionResult Index()
         {
-            ViewData ["NomeView"] = "Home"; 
-            return View();
+            return View(new BaseViewModels(){
+                NomeView = "Nome",
+                UsuarioNome= ObterUsuarioSession(), UsuarioEmail = ObterUsuarioNomeSession()
+            });
         }
 
         public IActionResult Privacy()

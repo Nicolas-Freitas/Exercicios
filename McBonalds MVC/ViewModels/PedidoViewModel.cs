@@ -13,8 +13,8 @@ namespace McBonalds_MVC.ViewModels
         {
             this.Hamburgueres = new List<Hamburguer>();
             this.Shakes = new List<Shake>();
-            this.NomeUsuario = "Jovem";
-            this.Cliente = new Cliente();
+            NomeUsuario = "Jovem";
+            Cliente = new Cliente();
         }
     }
 }

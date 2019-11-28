@@ -11,40 +11,42 @@ namespace McBonalds_MVC.Controllers {
         PedidoRepository pedidoRepository = new PedidoRepository ();
         HamburguerRepository hamburguerRepository = new HamburguerRepository ();
         ShakeRepository shakeRepository = new ShakeRepository();
-
         ClienteRepository clienteRepository = new ClienteRepository();
-        
         public IActionResult Index () {
             var hamburgueres = hamburguerRepository.ObterTodos ();
-            PedidoViewModel pvm = new PedidoViewModel();
-            pvm.Hamburgueres = hamburgueres;
+            PedidoViewModel pedido = new PedidoViewModel();
+            pedido.Hamburgueres = hamburgueres;
 
             var shake = shakeRepository.ObterTodos ();
-            pvm.Shakes = shake;
+            pedido.Shakes = shake;
 
             var usuarioLogado = ObterUsuarioSession();
             var nomeUsuarioLogado = ObterUsuarioNomeSession();
-            if (!string.IsNullOrEmpty(nomeUsuarioLogado))
-            {
-                pvm.NomeUsuario = nomeUsuarioLogado;
-            }
 
+            
+            if(!string.IsNullOrEmpty(nomeUsuarioLogado))
+            {
+                pedido.NomeUsuario = nomeUsuarioLogado;
+            }
+            
             var clienteLogado = clienteRepository.ObterPor(usuarioLogado);
-            if (clienteLogado != null)
+            
+            if(clienteLogado != null)
             {
-                pvm.Cliente = clienteLogado;
+                pedido.Cliente = clienteLogado;
             }
-
-            return View (pvm);
+            return View (pedido);
         }
         public IActionResult Registrar (IFormCollection form) {
             Pedido pedido = new Pedido ();
 
             Shake shake = new Shake ();
             shake.Nome = form["shake"];
-            shake.Preco = shakeRepository.ObterPrecoDe(form["shake"]);
+            shake.Preco = shakeRepository.ObterPrecoDe(form["shake"]) ;
 
             pedido.Shake = shake;
+
+            
 
             var nomeHamburguer = form["hamburguer"];
             Hamburguer hamburguer = new Hamburguer (nomeHamburguer, hamburguerRepository.ObterPrecoDe(nomeHamburguer));
@@ -65,6 +67,8 @@ namespace McBonalds_MVC.Controllers {
             pedido.PrecoTotal = hamburguer.Preco + shake.Preco;
 
             pedidoRepository.Inserir (pedido);
+
+        
 
             return View ("Sucesso");
         }

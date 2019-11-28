@@ -7,12 +7,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace McBonalds_MVC.Controllers {
     public class ClienteController : AbstractController {
+        
         private ClienteRepository clienteRepository = new ClienteRepository ();
         private PedidoRepository pedidoRepository = new PedidoRepository ();
 
         [HttpGet]
         public IActionResult Login () {
-            return View ();
+            return View (new BaseViewModels(){
+                NomeView = "Login", 
+                UsuarioEmail = ObterUsuarioSession(),
+                UsuarioNome = ObterUsuarioNomeSession()
+
+            });
         }
 
         [HttpPost]
@@ -32,6 +38,7 @@ namespace McBonalds_MVC.Controllers {
                     if (cliente.Senha.Equals (senha)) {
                         HttpContext.Session.SetString (SESSION_CLIENTE_EMAIL, usuario);
                         HttpContext.Session.SetString (SESSION_CLIENTE_NOME, cliente.Nome);
+                        HttpContext.Session.SetString ("SESSION_CLIENTE_NOME", cliente.Nome);
                         return RedirectToAction ("Historico", "Cliente");
                     } else {
                         return View ("Erro", new RespostaViewModel ("Senha incorreta"));
@@ -52,6 +59,13 @@ namespace McBonalds_MVC.Controllers {
             {
                 Pedidos = pedidos 
             });
+        }
+
+        public IActionResult Logoff(){
+            HttpContext.Session.Remove(SESSION_CLIENTE_EMAIL);
+            HttpContext.Session.Remove(SESSION_CLIENTE_NOME);
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -15,7 +15,9 @@ namespace McBonalds_MVC.Repositories
             }
         }
         public bool Inserir (Pedido pedido) {
-            var linha = new string[] { PrepararRegistroCSV (pedido) };
+            var quantidadeLinhas = File.ReadAllLines(PATH).Length;
+            pedido.Id = (uint) ++quantidadeLinhas;
+            var linha = new string[] {PrepararRegistroCSV (pedido)};
             File.AppendAllLines (PATH, linha);
             return true;
         }
@@ -27,6 +29,8 @@ namespace McBonalds_MVC.Repositories
             foreach (var linha in linhas)
             {
                 Pedido pedido = new Pedido();
+                pedido.Id = ulong.Parse
+                pedido.Status = uint.Parse(ExtrairValorDoCampo("id", linha));
                 pedido.Cliente.Nome = ExtrairValorDoCampo("nome", linha);
                 pedido.Cliente.Endereco = ExtrairValorDoCampo("endereco", linha);
                 pedido.Cliente.Telefone = ExtrairValorDoCampo("telefone", linha);
@@ -68,7 +72,7 @@ namespace McBonalds_MVC.Repositories
             var chave = nomeCampo;
             var indiceChave = linha.IndexOf(chave);  
 
-            var indiceTerminal = linha.IndexOf(";",indiceChave);
+            var indiceTerminal = linha.IndexOf(";", indiceChave);
             var valor = " ";
 
             if(indiceTerminal != -1)
